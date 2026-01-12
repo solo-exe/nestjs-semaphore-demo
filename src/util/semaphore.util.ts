@@ -1,7 +1,10 @@
 export class Semaphore {
   private tasks: (() => void)[] = [];
 
-  constructor(private count: number) {}
+  constructor(
+    // Would typically be the max number of transactions that should be in queue at a time
+    private count: number,
+  ) {}
 
   /**
    * Acquires a permit. If no permits are available,
