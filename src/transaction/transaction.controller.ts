@@ -19,8 +19,9 @@ export class TransactionController {
     // This call might wait if the buffer is full!
     // In a real API, you might want to wrap this in a timeout
     // to return a 503 Service Unavailable if the buffer is full for too long.
+    // Or better still utilize a queueing system like BullMQ with Redis,
+    // so as not to overload the server.
     await this.bufferService.submitTransaction(tx);
-
     return { status: 'Accepted', id: tx.id };
   }
 }
